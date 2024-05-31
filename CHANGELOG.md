@@ -12,13 +12,13 @@ The format is modified from [Keep a Changelog](https://keepachangelog.com/en/1.1
 
 - Nothing
 
-## 1.0.1 - 2023-05-31
+## 1.0.1 - 2024-05-31
 
 ### Changed
 
 - Updated namespace to github repo URL.
 
-## 1.0.0 - 2023-05-30
+## 1.0.0 - 2024-05-30
 
 ### Added
 
