@@ -5,6 +5,10 @@
 3. Click the Raw button.
 4. Tampermonkey will open it with a button for installing it.
 
+# Changelog
+
+See [CHANGELOG.md](/CHANGELOG.md) for a list of all changes to each script.
+
 # Scripts
 
 ## todoist-copy-task-comments
