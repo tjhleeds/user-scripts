@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy todoist task comments to clipboard
-// @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @namespace    https://github.com/tjhleeds/user-scripts/
+// @version      1.0.1
 // @description  Adds a button for copying todoist task comments to clipboard
 // @author       tjhleeds
 // @match        https://app.todoist.com/app/task/*
