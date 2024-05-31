@@ -23,3 +23,11 @@ The format is modified from [Keep a Changelog](https://keepachangelog.com/en/1.1
 ### Added
 
 - Created user script.
+
+# todoist-sync-shortcut
+
+## 0.1.0 - 2024-05-31
+
+### Added
+
+- Created user script. The sync shortcut works, but the menu stays open.
