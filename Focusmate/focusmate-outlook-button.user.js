@@ -9,7 +9,10 @@
 // ==/UserScript==
 
 window.addEventListener('load', function() {
-    const timeStrings = [...document.querySelectorAll('app-session-tile')]
+    const monthString = document.querySelector('.fm-cal-toolbar-date-display').innerText;
+    // examples - "Jul '24 - Aug '24" (current view spans two months), "July 2024" (current view in single month), "Jul '24" (single day on small screen)
+
+    const sessionTimeStrings = [...document.querySelectorAll('app-session-tile')]
         .map(tile => tile.querySelector('.wrap-single-line-el')?.innerText)
         .filter(str => !!str);
     // examples - '6:45 - 7:10am', '10 - 10:50am', '3:15 - 4:05pm'
