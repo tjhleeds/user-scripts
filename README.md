@@ -11,7 +11,17 @@ See [CHANGELOG.md](/CHANGELOG.md) for a list of all changes to each script.
 
 # Scripts
 
-## todoist-copy-task-comments
+## Focusmate
+
+### focusmate-outlook-button
+
+Adds a button to [Focusmate](https://focusmate.com/?fmreferral=hU3qiGqRem) sessions to get a one-click outlook calendar invitation.
+
+In versions 0.x, this script is a work in progress and does not yet work.
+
+## Todoist
+
+### todoist-copy-task-comments
 
 This script adds a button to [Todoist](https://www.todoist.com) tasks allowing you to copy all the comments on the task to your clipboard with a single click.
 
