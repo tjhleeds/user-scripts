@@ -37,14 +37,14 @@
         noteDivs.forEach(function(div) {
             log('Processing note div', div);
 
-            // Find all <p> elements within the current div
-            let pElements = div.querySelectorAll('p');
-            log('Found p elements', pElements);
+            // Find all text elements within the current div
+            let textElements = div.querySelectorAll('p, pre');
+            log('Found elements', textElements);
 
-            // Loop through the <p> elements and add their contents to the array
-            pElements.forEach(function(p) {
+            // Loop through the text elements and add their contents to the array
+            textElements.forEach(function(p) {
                 noteContents.push(p.textContent);
-                log('Added p element content to array', p.textContent);
+                log('Added text element content to array', p.textContent);
             });
         });
 
