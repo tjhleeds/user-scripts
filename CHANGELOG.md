@@ -10,7 +10,8 @@ The format is modified from [Keep a Changelog](https://keepachangelog.com/en/1.1
 
 ## Unreleased
 
-- Nothing
+- Code blocks in comments included in the copied text.
+- Styling improved for the button which copies the comments.
 
 ## 1.0.1 - 2024-05-31
 
