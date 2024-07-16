@@ -19,7 +19,9 @@
 
     // Function to simulate a click event
     function simulateClick(element) {
-        if (!element) return;
+        if (!element){
+            throw new Error('element not found when simulating click', element);
+        }
 
         log('Simulating click', element);
 
@@ -32,10 +34,7 @@
     }
 
     // Function to handle Ctrl+S shortcut
-    function handleShortcut(e) {
-        log('Handling shortcut', e);
-
-        // Check for Ctrl+S
+    function handleKeydown(e) {
         if (e.ctrlKey && e.key === 's') {
             log('Ctrl+S pressed');
 
@@ -60,12 +59,18 @@
 
         // Callback function to execute when mutations are observed
         var callback = function(mutationsList, observer) {
-            log('Running observation callback');
+            // log('Running observation callback');
 
+            let syncButtonFound = false;
             for(var mutation of mutationsList) {
                 if (mutation.type === 'childList') {
-                    var syncButton = document.querySelector('button[aria-describedby="last-sync-info"]');
+                    log('Found childlist');
+
+                    var syncButton = document.querySelector('[aria-describedby="last-sync-info"]');
                     if (syncButton) {
+                        log('Found sync button');
+                        syncButtonFound = true;
+
                         simulateClick(syncButton);
 
                         // TODO TJH - close the menu - the below doesn't work. Should also probably wait for the sync to finish first.
@@ -78,6 +83,10 @@
                     }
                 }
             }
+
+            if(!syncButtonFound){
+                throw new Error('Sync button not found');
+            }
         };
 
         // Create an observer instance linked to the callback function
@@ -88,7 +97,7 @@
     }
 
     // Listen for keydown event
-    document.addEventListener('keydown', handleShortcut);
+    document.addEventListener('keydown', handleKeydown);
 
     log('Event listener added');
 })();
