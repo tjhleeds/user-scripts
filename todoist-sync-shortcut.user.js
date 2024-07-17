@@ -73,9 +73,13 @@
 
                         simulateClick(syncButton);
 
+                        // TODO TJH - detect when sync finishes. Text changes to 'Just now'.
+
                         // TODO TJH - close the menu - the below doesn't work. Should also probably wait for the sync to finish first.
                         // click on the background to close the menu
                         const background = document.querySelector('[data-backdrop]');
+                        log('Found background', background);
+
                         simulateClick(background);
 
                         observer.disconnect();
@@ -93,6 +97,7 @@
         var observer = new MutationObserver(callback);
 
         // Start observing the document with the configured parameters
+        // TODO TJH - can I observe a smaller portion of the document for improved performance?
         observer.observe(document, config);
     }
 
