@@ -12,6 +12,8 @@
 // - The script works, but the code is messy.
 // - The event listeners are added 2s after page load, but never again. Any new tasks won't have them.
 //    - This is okay for v1.
+// - Sub-tasks don't get the hover.
+//    - This is okay for v1.
 
 (function() {
     'use strict';
