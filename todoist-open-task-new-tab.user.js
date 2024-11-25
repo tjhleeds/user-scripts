@@ -53,9 +53,8 @@ function handleHover(event) {
             button.innerHTML = `
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M3 21L21 3" stroke="grey" stroke-width="2"/>
-    <path d="M3 3H21V21" stroke="grey" stroke-width="2"/>
-</svg>
-        `;
+    <path d="M9 3H21V15" stroke="grey" stroke-width="2"/>
+</svg>`;
 
             button.addEventListener('click', () => {
                 window.open(url, '_blank');
