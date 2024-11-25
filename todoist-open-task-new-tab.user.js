@@ -14,6 +14,7 @@
 //    - This is okay for v1.
 // - Sub-tasks don't get the hover.
 //    - This is okay for v1.
+// - Still need to update the README and CHANGELOG
 
 (function() {
     'use strict';
