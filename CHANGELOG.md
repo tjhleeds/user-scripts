@@ -23,3 +23,15 @@ The format is modified from [Keep a Changelog](https://keepachangelog.com/en/1.1
 ### Added
 
 - Created user script.
+
+# todoist-open-task-new-tab
+
+## Unreleased
+
+- Nothing
+
+## 1.0.0 - 2024-11-26
+
+## Added
+
+- Created user script.
