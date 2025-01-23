@@ -30,6 +30,13 @@ The format is modified from [Keep a Changelog](https://keepachangelog.com/en/1.1
 
 - Nothing
 
+## 1.1.0 - 2025-01-23
+
+### Changed
+
+- Icon to open task in new tab will be added to new tasks. 
+- Icon to open task is now a link not a button, so the URL is visible on hover.
+
 ## 1.0.0 - 2024-11-26
 
 ## Added

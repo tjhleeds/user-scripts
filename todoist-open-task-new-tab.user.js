@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Button to open todoist task in new tab from a task list
 // @namespace    https://github.com/tjhleeds/user-scripts/
-// @version      1.0.0
+// @version      1.1.0
 // @description  Add a button to any todoist task list which will open the selected task in a new tab
 // @author       tjhleeds
 // @match        https://app.todoist.com/app/*
@@ -11,27 +11,35 @@
 (function () {
     'use strict';
 
-    setTimeout(() => {
-        const tasks = [...document.querySelectorAll('.task_list_item__body')];
-
-        tasks.forEach(task => {
-            task.addEventListener('mouseenter', onHover);
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === Node.ELEMENT_NODE && node.hasAttribute('data-item-index')) {
+                        node.addEventListener('mouseenter', onHover);
+                    }
+                });
+            }
         });
-    }, 2000);
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
 })();
 
 function onHover(event) {
     const hoveredTask = event.currentTarget;
     const taskActions = hoveredTask.querySelector('.task_list_item__actions');
     if (taskActions) {
-        const buttonAlreadyAdded = taskActions.querySelector('button.tjhleeds-open-new-tab') !== null;
+        const buttonAlreadyAdded = taskActions.querySelector('.tjhleeds-open-new-tab') !== null;
 
         if (buttonAlreadyAdded) {
             return;
         }
 
         const taskId = getTaskId(hoveredTask);
-        const newTabButton = buildButton(taskId);
+
+        const newTabButton = buildLink(taskId);
         taskActions.appendChild(newTabButton);
     } else {
         console.error('Task actions not found');
@@ -39,27 +47,27 @@ function onHover(event) {
 }
 
 function getTaskId(hoveredTask) {
-    const ariaLabelAttribute = hoveredTask.getAttribute('aria-labelledby');
-    const attributeElements = ariaLabelAttribute?.match(/task-(.*?)-content/);
+    const elementId = hoveredTask.children[0].children[0].id;
 
-    if (attributeElements?.length > 1) {
-        return attributeElements[1];
+    const regexParts = elementId.match(/task-(.*)/);
+
+    if (regexParts?.length > 1) {
+        return regexParts[1];
     }
 
     throw new Error('Task ID could not be found');
 }
 
-function buildButton(taskId) {
+function buildLink(taskId) {
     const taskUrl = `https://app.todoist.com/app/task/${taskId}`;
 
-    const newTabButton = document.createElement('button');
-    newTabButton.classList.add('tjhleeds-open-new-tab');
-    newTabButton.innerHTML = getIconAsSvg();
-    newTabButton.onclick = () => {
-        window.open(taskUrl, '_blank');
-    };
+    const newTabLink = document.createElement('a');
+    newTabLink.href = taskUrl;
+    newTabLink.target = '_blank';
+    newTabLink.innerHTML = getIconAsSvg();
+    newTabLink.classList.add('tjhleeds-open-new-tab');
 
-    return newTabButton;
+    return newTabLink;
 }
 
 function getIconAsSvg() {
